@@ -1,0 +1,89 @@
+<div class="container app">
+  <div class="row">
+    <div class="col-sm-8">
+      <h1 class="text-center">{{title}}</h1>
+    </div>
+    <div class="col-sm-4">
+      <div class="alert alert-success alert-dismissible" *ngIf="msg">
+        <a href="#" class="close" (click)="closeAlert()">&times;</a>
+        {{msg}}
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4"> <img src="https://angular.io/assets/images/logos/angular/angular.png" alt=""></div>
+    <div class="col-sm-8">
+      <h2>Create Data:</h2>
+      <form class="form-horizontal">
+        <div class="form-group">
+          <label for="name" class="control-label">Name</label>
+          <input type="text" class="form-control" id="name" name="name" [(ngModel)]="model.name"
+            placeholder="Enter a New Name">
+        </div>
+        <div class="form-group">
+          <label for="position" class="control-label">Position</label>
+          <input type="text" class="form-control" id="position" name="name" [(ngModel)]="model.position"
+            placeholder="Enter a New Position">
+        </div>
+        <div class="form-group">
+          <label for="email" class="control-label">Email</label>
+          <input type="text" class="form-control" id="email" name="name" [(ngModel)]="model.email"
+            placeholder="Enter a New Email">
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-success" (click)="addEmployee()">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-8">
+      <h2>Read Data</h2>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Email</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let employee of employees; let i = index">
+            <td>{{employee.name}}</td>
+            <td>{{employee.position}}</td>
+            <td>{{employee.email}}</td>
+            <td>
+              <a (click)="editEmployee(i)" class="btn btn-success">Edit</a>
+              <a (click)="deleteEmployee(i)" class="btn btn-danger">Delete</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-sm-4" [hidden]="hideUpdate">
+      <h2>Update Data</h2>
+      <form class="form-horizontal">
+        <div class="form-group">
+          <label for="name" class="control-label">Name</label>
+          <input type="text" class="form-control" id="name" name="name" [(ngModel)]="model2.name"
+            placeholder="Enter a New Name">
+        </div>
+        <div class="form-group">
+          <label for="position" class="control-label">Position</label>
+          <input type="text" class="form-control" id="position" name="position" [(ngModel)]="model2.position"
+            placeholder="Enter a New Position">
+        </div>
+        <div class="form-group">
+          <label for="email" class="control-label">Email</label>
+          <input type="text" class="form-control" id="email" name="email" [(ngModel)]="model2.email"
+            placeholder="Enter a New Email">
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-success" (click)="updateEmployee()">Save</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
